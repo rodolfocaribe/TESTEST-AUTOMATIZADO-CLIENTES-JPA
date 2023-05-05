@@ -5,6 +5,7 @@ import com.iftm.client.repositories.ClientRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.Instant;
@@ -41,7 +42,7 @@ class DsclientApplicationTests {
 		//act
 		var result = clientRepository.findByName(nomeInexistente);
 		//assert
-		assertNull(result);
+        assertNull(result);
 	}
 
     @Test
@@ -84,7 +85,7 @@ class DsclientApplicationTests {
         //Arrange
         int tamanho = 2;
         Double salary = 5000.0;
-        String nomeEsperado[] = {"Carolina Maria de Jesus", "Toni Morrison"};
+        String[] nomeEsperado = {"Carolina Maria de Jesus", "Toni Morrison"};
         //Act
         var result = clientRepository.findBySalaryGreaterThat(salary);
         //Assert
@@ -99,7 +100,7 @@ class DsclientApplicationTests {
         //Arrange
         Double salary = 2000.0;
         int tamanho = 3;
-        String nomeEsperado[] = {"Conceição Evaristo", "Yuval Noah Harari", "Chimamanda Adichie"};
+        String[] nomeEsperado = {"Conceição Evaristo", "Yuval Noah Harari", "Chimamanda Adichie"};
         //Act
         var result = clientRepository.findBySalaryLessThat(salary);
         //Assert
@@ -115,7 +116,7 @@ class DsclientApplicationTests {
         Double salaryStart = 2000.0;
         Double salaryEnd = 5000.0;
         int tamanho = 7;
-        String nomeEsperado[] = {"Lázaro Ramos", "Clarice Lispector", "Gilberto Gil", "Djamila Ribeiro", "Jose Saramago", "Silvio Almeida", "Jorge Amado"};
+        String[] nomeEsperado = {"Lázaro Ramos", "Clarice Lispector", "Gilberto Gil", "Djamila Ribeiro", "Jose Saramago", "Silvio Almeida", "Jorge Amado"};
         //Act
         var result = clientRepository.findBySalaryBetween(salaryStart, salaryEnd);
         //Assert
